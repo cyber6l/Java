@@ -1,0 +1,338 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JSeparator;
+
+public class Project extends JFrame implements ItemListener, ActionListener {
+
+	
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	
+        JCheckBox mousebtn,keyboardbtn,headsetbtn,screenbtn;
+        JLabel pc_pic;
+        StringBuffer choices;
+        private JPanel panel_comboBox,panel_radiobtn,logoPic_panel,collectionPic_panel,result_panel,Header_panel,pcPic_panel,coupon_panel,panel_7;
+        private JComboBox<?> ComboBox;
+        private JLabel logo,pick_label,collection_label,label_collection,lblNewLabel_4,choose_label,Empty1,Empty2,Empty;
+        private JRadioButton c1_Radiobtn,c2_Radiobtn,c3_Radiobtn;
+        private JTextArea results;
+        private JButton btnAccessories,probtn,originalbtn,proplusbtn;
+        private JSeparator separator,separator_2,separator_3,separator_1,separator_4,separator_5;
+        public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Project frame = new Project();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	
+	public Project() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 757, 455);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+        
+        choices = new StringBuffer("mkhs");
+        contentPane.setLayout(new GridLayout(0, 5, 0, 0));
+        contentPane.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+        
+
+		setContentPane(contentPane);
+		
+        
+		mousebtn = new JCheckBox("Mouse");
+		mousebtn.setSelected(true);
+		
+		keyboardbtn = new JCheckBox("Keyboard");
+		keyboardbtn.setSelected(true);
+		
+		        
+		mousebtn.addItemListener(this);
+		keyboardbtn.addItemListener(this);
+		
+		Header_panel = new JPanel();
+		contentPane.add(Header_panel);
+		Header_panel.setLayout(new BorderLayout(0, 0));
+		
+		lblNewLabel_4 = new JLabel("Build Your PC!");
+		lblNewLabel_4.setForeground(new Color(0, 128, 255));
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 18));
+		Header_panel.add(lblNewLabel_4, BorderLayout.CENTER);
+		
+		JPanel checkPanel = new JPanel(new GridLayout(6, 1));
+		
+		choose_label = new JLabel("Choose $80:");
+		choose_label.setFont(new Font("Tahoma", Font.BOLD, 14));
+		checkPanel.add(choose_label);
+		checkPanel.add(mousebtn);
+		checkPanel.add(keyboardbtn);
+		
+		screenbtn = new JCheckBox("Screen");
+		screenbtn.setSelected(true);
+		screenbtn.addItemListener(this);
+		checkPanel.add(screenbtn);
+		
+		headsetbtn = new JCheckBox("Headset");
+		headsetbtn.setSelected(true);
+		headsetbtn.addItemListener(this);
+		checkPanel.add(headsetbtn);
+		
+		          
+		contentPane.add(checkPanel);
+		
+		btnAccessories = new JButton("Add Accessories");
+		btnAccessories.setActionCommand("btnAccessories");
+		btnAccessories.addActionListener(this);
+		btnAccessories.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnAccessories.setBackground(new Color(64, 128, 128));
+		checkPanel.add(btnAccessories);
+		
+		pcPic_panel = new JPanel();
+		contentPane.add(pcPic_panel);
+		pcPic_panel.setLayout(new BorderLayout(0, 0));
+		
+		pc_pic = new JLabel();
+		pc_pic.setHorizontalAlignment(SwingConstants.LEFT);
+		pcPic_panel.add(pc_pic);
+		pc_pic.setIcon(new ImageIcon("C:\\Users\\le\\Desktop\\picture_pc\\picture_pc\\pc-mkhs.png"));
+		pc_pic.setFont(pc_pic.getFont().deriveFont(Font.ITALIC));
+		
+		panel_comboBox = new JPanel();
+		contentPane.add(panel_comboBox);
+		panel_comboBox.setLayout(new GridLayout(4, 4, 0, 0));
+		
+		pick_label = new JLabel("Pick Company:");
+		pick_label.setFont(new Font("Tahoma", Font.BOLD, 14));
+		pick_label.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_comboBox.add(pick_label);
+		
+		Empty = new JLabel("");
+		panel_comboBox.add(Empty);
+		
+		
+		
+		
+		
+		ComboBox = new JComboBox();
+		String[] choices = {"", "ASUS", "MSI", "OMEN"};
+		ComboBox.setModel(new DefaultComboBoxModel(choices));
+		ComboBox.addItemListener(this);
+		ComboBox.setBackground(new Color(192, 192, 192));
+		ComboBox.setSelectedIndex(0);
+		panel_comboBox.add(ComboBox);
+		
+		logoPic_panel = new JPanel();
+		contentPane.add(logoPic_panel);
+		logoPic_panel.setLayout(new BorderLayout(0, 0));
+		
+		logo = new JLabel("");
+		logo.setHorizontalAlignment(SwingConstants.CENTER);
+		logoPic_panel.add(logo);
+		logo.setIcon(new ImageIcon("C:\\Users\\le\\Desktop\\logos\\logos\\OMEN.png"));
+		
+		
+		collectionPic_panel = new JPanel();
+		contentPane.add(collectionPic_panel);
+		collectionPic_panel.setLayout(new BorderLayout(0, 0));
+		
+		label_collection = new JLabel("");
+		label_collection.setHorizontalAlignment(SwingConstants.CENTER);
+		label_collection.setIcon(new ImageIcon("C:\\Users\\le\\Desktop\\Collection_Pics\\Collection_Pics\\pc3.png"));
+		collectionPic_panel.add(label_collection, BorderLayout.CENTER);
+		
+		collection_label = new JLabel(" Collections:");
+		collectionPic_panel.add(collection_label, BorderLayout.NORTH);
+		collection_label.setFont(new Font("Tahoma", Font.BOLD, 14));
+		collection_label.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		panel_radiobtn = new JPanel();
+		contentPane.add(panel_radiobtn);
+		panel_radiobtn.setLayout(new GridLayout(4, 2, 0, 0));
+		
+		separator = new JSeparator();
+		panel_radiobtn.add(separator);
+		
+		separator_1 = new JSeparator();
+		panel_radiobtn.add(separator_1);
+		
+		separator_2 = new JSeparator();
+		separator_2.setOrientation(SwingConstants.VERTICAL);
+		panel_radiobtn.add(separator_2);
+		
+		originalbtn = new JButton("View");
+		originalbtn.setActionCommand("pc1.png");
+		panel_radiobtn.add(originalbtn);
+		
+		separator_3 = new JSeparator();
+		separator_3.setOrientation(SwingConstants.VERTICAL);
+		panel_radiobtn.add(separator_3);
+		
+		probtn = new JButton("View");
+		probtn.setActionCommand("pc2.png");
+		panel_radiobtn.add(probtn);
+		
+		separator_4 = new JSeparator();
+		separator_4.setOrientation(SwingConstants.VERTICAL);
+		panel_radiobtn.add(separator_4);
+		
+		proplusbtn = new JButton("View");
+		proplusbtn.setActionCommand("pc3.png");
+		panel_radiobtn.add(proplusbtn);
+		
+		ButtonGroup Group = new ButtonGroup();
+		
+		panel_7 = new JPanel();
+		contentPane.add(panel_7);
+		panel_7.setLayout(new GridLayout(4, 1, 0, 0));
+		
+		separator_5 = new JSeparator();
+		panel_7.add(separator_5);
+		
+		c1_Radiobtn = new JRadioButton("Original $800");
+		panel_7.add(c1_Radiobtn);
+		c1_Radiobtn.setActionCommand("c1_Radiobtn");
+		
+
+		
+		c1_Radiobtn.addActionListener(this);
+		Group.add(c1_Radiobtn);
+		
+		
+		c2_Radiobtn = new JRadioButton("Pro $1300");
+		panel_7.add(c2_Radiobtn);
+		c2_Radiobtn.setActionCommand("c2_Radiobtn");
+		c2_Radiobtn.addActionListener(this);
+		Group.add(c2_Radiobtn);
+		
+		c3_Radiobtn = new JRadioButton("Pro Plus $2000");
+		panel_7.add(c3_Radiobtn);
+		c3_Radiobtn.setActionCommand("c3_Radiobtn");
+		c3_Radiobtn.addActionListener(this);
+		Group.add(c3_Radiobtn);
+		
+		coupon_panel = new JPanel();
+		contentPane.add(coupon_panel);
+		coupon_panel.setLayout(new GridLayout(3, 1, 0, 0));
+		
+		Empty1 = new JLabel("");
+		coupon_panel.add(Empty1);
+		
+		Empty2 = new JLabel("");
+		coupon_panel.add(Empty2);
+		
+		result_panel = new JPanel();
+		contentPane.add(result_panel);
+		
+		results = new JTextArea();
+		results.setColumns(14);
+		results.setRows(10);
+		result_panel.add(results);
+		
+		originalbtn.addActionListener(this);
+		probtn.addActionListener(this);
+		proplusbtn.addActionListener(this);
+		
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		
+        int index = 0;
+        char c = '-';
+        Object source = e.getItemSelectable();
+
+        if (source == mousebtn) {
+            index = 0;
+            c = 'm';
+        } else if (source == keyboardbtn) {
+            index = 1;
+            c = 'k';
+        } else if (source == headsetbtn) {
+            index = 2;
+            c = 'h';
+        } else if (source == screenbtn) {
+            index = 3;
+            c = 's';
+        } 
+    
+        if(source == ComboBox ) {
+	    ComboBox=(JComboBox<?>) e.getItemSelectable();
+		logo.setIcon(new ImageIcon("C:\\Users\\le\\Desktop\\logos\\logos\\"+ ComboBox.getSelectedItem() + ".png"));
+    }
+    else {
+        if (e.getStateChange() == ItemEvent.DESELECTED) {
+            c = '-';
+        }
+
+        choices.setCharAt(index, c);
+
+        
+        String imgName = "C:\\Users\\le\\Desktop\\picture_pc\\picture_pc\\pc-" + choices + ".png";
+    	ImageIcon img = new ImageIcon(imgName);
+    	pc_pic.setIcon(img);
+
+    }
+}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		String picName = e.getActionCommand();
+		label_collection.setIcon(new ImageIcon("C:\\Users\\le\\Desktop\\Collection_Pics\\Collection_Pics\\" + picName));
+		
+		String a = e.getActionCommand() ;
+		if ( a.equals("c1_Radiobtn")  ) {
+			results.append( " Original $800"+ "\n");
+			
+		}else {
+			if ( a.equals("c2_Radiobtn")  ) {
+		
+				results.append(" Pro $1300"+ "\n");
+			}
+			else {
+				if( a.equals("c3_Radiobtn")  ) {
+					results.append(" Pro Plus $2000"+ "\n");	
+				}
+				else {
+					if( a.equals("btnAccessories")  ) {
+						results.append( " Items: $80"+ "\n");	
+				}
+
+					
+			}
+		
+	   }
+
+    }
+
+}
+}
